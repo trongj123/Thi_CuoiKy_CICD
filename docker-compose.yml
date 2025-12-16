@@ -1,19 +1,21 @@
 version: '3.8'
 
 services:
-  backend:
+  # --- PROJECT 1: BACKEND (NODE) ---
+  project1:   # <-- Tên mới (Thay cho chữ backend)
     build: ./Project1_QuanLyUser_Node
-    container_name: my-backend-container
+    container_name: project1_backend_container # Tên hiển thị container
     ports:
-      - "10000:3000"  # <-- SỬA: Map cổng 10000 máy thật vào cổng 3000 của container
+      - "10000:3000"
     restart: always
 
-  frontend:
+  # --- PROJECT 2: FRONTEND (REACT) ---
+  project2:   # <-- Tên mới (Thay cho chữ frontend)
     build: ./Project2_TimViec_React
-    container_name: my-frontend-container
+    container_name: project2_frontend_container # Tên hiển thị container
     ports:
       - "3000:3000"
     stdin_open: true
     tty: true
     depends_on:
-      - backend
+      - project1  # <-- QUAN TRỌNG: Phải sửa chỗ này để nó biết chờ Project 1 chạy trước
