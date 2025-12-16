@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
-  // 1. DATABASE & BACKEND (Giả lập tại client)
-  const [jobs] = useState([
-    { id: 1, title: 'Frontend Developer', salary: '$1000' },
-    { id: 2, title: 'Backend Developer', salary: '$1200' }
-  ]);
+  const [jobs, setJobs] = useState([]);
 
-  // 2. FRONTEND VIEW
+  // Frontend gọi Backend (nằm ngay trong cùng dự án tại thư mục /api)
+  useEffect(() => {
+    fetch('/api/jobs')
+      .then(response => response.json())
+      .then(data => setJobs(data))
+      .catch(error => console.error('Lỗi:', error));
+  }, []);
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Project 2: Job Website (Vercel Platform)</h1>
-      <ul>
-        {jobs.map(job => (
-          <li key={job.id}>
-            <b>{job.title}</b> - Salary: {job.salary}
-          </li>
-        ))}
-      </ul>
+    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
+      <h1>Project 2: Tuyển dụng (Fullstack React + Node)</h1>
+      <p>Dữ liệu này được lấy từ Backend nội bộ (/api/jobs)</p>
+      <hr />
+
+      {jobs.length === 0 ? <p>Đang tải dữ liệu từ server...</p> : (
+        <ul>
+          {jobs.map(job => (
+            <li key={job.id} style={{ marginBottom: '10px' }}>
+              <strong style={{ color: 'blue' }}>{job.title}</strong>
+              <br />
+              Lương: {job.salary} - Tại: {job.location}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
