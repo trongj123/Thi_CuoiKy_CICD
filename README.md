@@ -1,7 +1,4 @@
 ---
-
-
-
 \## 🚀 1. GIỚI THIỆU
 
 Dự án bao gồm 2 thành phần chính hoạt động độc lập, được triển khai tự động (CI/CD) và đóng gói bằng Docker:
@@ -9,9 +6,6 @@ Dự án bao gồm 2 thành phần chính hoạt động độc lập, được 
 \* \*\*Project 1 (Backend):\*\* Node.js + SQLite (Quản lý Nhân sự).
 
 \* \*\*Project 2 (Frontend):\*\* ReactJS (Website Tìm việc làm).
-
-
-
 ---
 
 
