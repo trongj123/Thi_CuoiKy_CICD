@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./Project1_QuanLyUser_Node
+    container_name: my-backend-container
+    ports:
+      - "10000:3000"  # <-- SỬA: Map cổng 10000 máy thật vào cổng 3000 của container
+    restart: always
+
+  frontend:
+    build: ./Project2_TimViec_React
+    container_name: my-frontend-container
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
