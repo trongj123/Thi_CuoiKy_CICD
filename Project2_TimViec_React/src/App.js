@@ -1,35 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
-  const [jobs, setJobs] = useState([]);
-
-  // Frontend gọi Backend (nằm ngay trong cùng dự án tại thư mục /api)
-  useEffect(() => {
-    fetch('/api/jobs')
-      .then(response => response.json())
-      .then(data => setJobs(data))
-      .catch(error => console.error('Lỗi:', error));
-  }, []);
+  const [jobs] = useState([
+    { id: 1, title: 'React Frontend Dev', salary: '$1000', location: 'Remote (Netlify)' },
+    { id: 2, title: 'NodeJS Backend Dev', salary: '$1500', location: 'Ha Noi' },
+    { id: 3, title: 'Project Manager', salary: '$2000', location: 'Ho Chi Minh' }
+  ]);
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h1>Project 2: Tuyển dụng (Fullstack React + Node)</h1>
-      <p>Dữ liệu này được lấy từ Backend nội bộ (/api/jobs)</p>
-      <hr />
-
-      {jobs.length === 0 ? <p>Đang tải dữ liệu từ server...</p> : (
-        <ul>
-          {jobs.map(job => (
-            <li key={job.id} style={{ marginBottom: '10px' }}>
-              <strong style={{ color: 'blue' }}>{job.title}</strong>
-              <br />
-              Lương: {job.salary} - Tại: {job.location}
-            </li>
-          ))}
-        </ul>
-      )}
+      <h1>WEBSITE TÌM VIỆC (Deploy on Netlify)</h1>
+      <p>Platform Frontend: <b>Netlify</b> | Platform Backend: <b>Render</b></p>
+      <hr/>
+      {jobs.map(job => (
+        <div key={job.id} style={{ border: '1px solid #ccc', margin: '10px 0', padding: '10px' }}>
+          <h3>{job.title}</h3>
+          <p>Lương: {job.salary} | Địa điểm: {job.location}</p>
+        </div>
+      ))}
     </div>
   );
 }
-
 export default App;
