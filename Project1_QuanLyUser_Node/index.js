@@ -24,6 +24,7 @@ db.serialize(() => {
             stmt.run("Nguyen Van A", "Giam doc (Data from SQLite)");
             stmt.run("Tran Thi B", "Thu ky (Data from SQLite)");
             stmt.run("Le Van C", "Nhan vien (Data from SQLite)");
+            stmt.run("dang vo quoc trong");
             stmt.finalize();
             console.log("Da Insert du lieu mau vao SQLite");
         }

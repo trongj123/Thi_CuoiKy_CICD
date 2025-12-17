@@ -4,7 +4,8 @@ function App() {
   const [jobs] = useState([
     { id: 1, title: 'React Frontend Dev', salary: '$1000', location: 'Remote (Netlify)' },
     { id: 2, title: 'NodeJS Backend Dev', salary: '$1500', location: 'Ha Noi' },
-    { id: 3, title: 'Project Manager', salary: '$2000', location: 'Ho Chi Minh' }
+    { id: 3, title: 'Project Manager', salary: '$2000', location: 'Ho Chi Minh' },
+    { id: 4, title: 'dang vo quoc trong'}
   ]);
 
   return (
